@@ -51,5 +51,12 @@ public class ApiController {
         this.personService.updatePerson(p);
     }
     @DeleteMapping("/persons")
-    public void deletePerson(String id) {}
+    public void deletePerson(String id) {
+        if (!this.personService.exists(id)) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Person to delete not found"
+            );
+        }
+        this.personService.delete(id);
+    }
 }

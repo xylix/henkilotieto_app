@@ -35,4 +35,11 @@ public class PersonService {
     public Collection<Person> getPersons() {
         return this.persons.values();
     }
+
+    public void delete(String id) {
+        if (!this.persons.containsKey(id)) {
+            throw new NullPointerException();
+        }
+        this.persons.remove(id);
+    }
 }

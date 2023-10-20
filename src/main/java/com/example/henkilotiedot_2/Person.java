@@ -1,7 +1,6 @@
 package com.example.henkilotiedot_2;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 public class Person {
