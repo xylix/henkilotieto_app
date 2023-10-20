@@ -48,4 +48,15 @@ public class PersonServiceUnitTests {
         Assertions.assertEquals(p2.name, this.personService.getPerson(p2.id).name);
 
     }
+
+    @Test
+    void updatePerson() {
+        Person p = createTestPerson("M Meikäläinen", "101010-000");
+        this.personService.addPerson(p);
+        Assertions.assertEquals(p, this.personService.getPerson(p.id));
+        Person updated = createTestPerson("A Meikäläinen", "101010-000");
+        this.personService.updatePerson(updated);
+        Assertions.assertEquals(updated, this.personService.getPerson(updated.id));
+
+    }
 }
