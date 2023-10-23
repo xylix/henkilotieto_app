@@ -1,10 +1,10 @@
-package com.example.henkilotiedot_2;
+package com.example.henkilotiedot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Henkilotiedot2ApplicationTests {
+class HenkilotiedotApplicationTests {
 
     @Test
     void contextLoads() {

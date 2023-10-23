@@ -1,4 +1,4 @@
-package com.example.henkilotiedot_2;
+package com.example.henkilotiedot;
 
 import org.springframework.stereotype.Service;
 
@@ -9,6 +9,9 @@ import java.util.HashMap;
 // Beans could be the more extensible solution.
 // Since we use the personal id number as the id of a person, it would cause some difficulty if a person does not
 // have a finnish identity number or if their identity number changes.
+
+// The service could have `id` checks, but since this is for a web api that will have to implement possible
+// errors at the top level anyway, we just provide an `exists` method and trust the caller of the API to verify.
 @Service
 public class PersonService {
     private final HashMap<String, Person> persons = new HashMap<>();
@@ -26,9 +29,6 @@ public class PersonService {
     }
 
     public void updatePerson(Person person) {
-        if (!this.persons.containsKey(person.id)) {
-            throw new NullPointerException();
-        }
         this.persons.put(person.id, person);
     }
 
@@ -37,9 +37,6 @@ public class PersonService {
     }
 
     public void delete(String id) {
-        if (!this.persons.containsKey(id)) {
-            throw new NullPointerException();
-        }
         this.persons.remove(id);
     }
 }

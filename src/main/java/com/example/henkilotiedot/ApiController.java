@@ -1,4 +1,4 @@
-package com.example.henkilotiedot_2;
+package com.example.henkilotiedot;
 
 
 import org.springframework.http.HttpStatus;
@@ -13,19 +13,20 @@ public class ApiController {
 
     public ApiController(PersonService personService) {
         this.personService = personService;
-
     }
 
     @GetMapping("/persons")
-    public String persons() {
-        StringBuilder output = new StringBuilder();
-        Collection<Person> persons = this.personService.getPersons();
-        persons.forEach(output::append);
-        return output.toString();
+    public Collection<Person> persons() {
+        return this.personService.getPersons();
     }
 
     @GetMapping("/persons/{id}")
     public Person person(@PathVariable String id) {
+        if (!this.personService.exists(id)) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Person not found"
+            );
+        }
         return this.personService.getPerson(id);
     }
 

@@ -1,4 +1,4 @@
-package com.example.henkilotiedot_2;
+package com.example.henkilotiedot;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

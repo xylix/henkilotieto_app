@@ -1,4 +1,4 @@
-package com.example.henkilotiedot_2;
+package com.example.henkilotiedot;
 
 import java.time.LocalDate;
 import java.util.Objects;
